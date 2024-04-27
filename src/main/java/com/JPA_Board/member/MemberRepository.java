@@ -1,4 +1,4 @@
-package com.JPA_Board.domain.member;
+package com.JPA_Board.member;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;

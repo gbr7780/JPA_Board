@@ -1,6 +1,6 @@
-package com.JPA_Board.domain.member;
+package com.JPA_Board.member;
 
-import com.JPA_Board.domain.common.BaseTimeEntity;
+import com.JPA_Board.common.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.JPA_Board.domain.common;
+package com.JPA_Board.common;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

@@ -1,8 +1,8 @@
 package com.JPA_Board;
 
-import com.JPA_Board.domain.member.Gender;
-import com.JPA_Board.domain.member.Member;
-import com.JPA_Board.domain.member.MemberRepository;
+import com.JPA_Board.member.Gender;
+import com.JPA_Board.member.Member;
+import com.JPA_Board.member.MemberRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
