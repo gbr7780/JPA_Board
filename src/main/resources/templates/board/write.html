@@ -37,6 +37,12 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
         /*<![CDATA[*/
+
+        window.onload= () => {
+            findBoard();
+        }
+
+
         /**
          * 유효성 검사
          */
@@ -81,6 +87,27 @@
 
             };
 
+            const id = /*[[ ${id} ]]*/;
+            const url = ( id ) ? `/api/boards/${id}` : '/api/boards';
+            const method = ( id ) ? 'PATCH' : 'POST';
+
+            fetch(url, {
+                method : method,
+                headers : {'Content-Type' : 'application/json'},
+                body : JSON.stringify(params)
+            }).then(response => {
+                if(!response.ok) {
+                    throw new Error('Request failed...');
+                }
+
+                alert('저장되었습니다.');
+                location.href = '/board/list';
+            }).catch(error => {
+                alert('오류가 발생하였습니다.');
+            })
+
+
+            /*
             fetch('/api/boards', {
                     method : 'POST',
                     headers : {
@@ -97,8 +124,36 @@
             }).catch(error => {
                 alert('오류가 발생하였습니다.');
             })
+            */
+
         }
 
+        /**
+         * 게시글 조회
+         */
+        function findBoard() {
+            const id = /*[[ ${id} ]]*/;
+
+            if(!id) {
+                return false;
+            }
+
+            fetch(`/api/boards/${id}`).then(response => {
+                if(!response.ok) {
+                    throw new Error('Request failed...');
+                }
+                return response.json();
+            }).then(json => {
+                const form = document.getElementById('form');
+                form.title.value = json.title;
+                form.content.value = json.content;
+                form.writer.value = json.writer;
+            }).catch(error => {
+                alert('게시글 정보를 찾을수 없습니다.');
+                location.href = '/board/list';
+            })
+
+        }
 
 
         /*]]>*/

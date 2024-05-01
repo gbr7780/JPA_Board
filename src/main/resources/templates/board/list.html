@@ -60,7 +60,7 @@
      * 게시글 리스트 조회
      */
     function findAll() {
-        fetch('/api/boards').then(response => {
+        fetch('/api/boards?deleteYn=N').then(response => {
             if(response.ok) {
                 return response.json();
             }
@@ -76,7 +76,7 @@
                             <tr>
                                 <td>${json.length - idx}</td>
                                 <td class="text-left">
-                                    <a href="javascript: void(0);">${obj.title}</a>
+                                    <a href="javascript: void(0);" onclick="goView(${obj.id})">${obj.title}</a>
                                 </td>
                                 <td>${obj.writer}</td>
                                 <td>${moment(obj.createdDate).format('YYYY-MM-DD HH:mm:ss')}</td>
@@ -86,8 +86,14 @@
                 });
             }
             document.getElementById('list').innerHTML = html;
-
         });
+    }
+
+    /**
+     * 게시글 조회
+     */
+    function goView(id) {
+        location.href = `/board/view/${id}`;
     }
 
     /*]]>*/
