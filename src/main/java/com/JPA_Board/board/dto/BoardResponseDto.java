@@ -1,11 +1,14 @@
 package com.JPA_Board.board.dto;
 
 import com.JPA_Board.board.entity.Board;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)      // Mybatis에서 SELECT 결과를 객체에 매핑하기 위해서는 기본생성자가 필요함.
 public class BoardResponseDto {
     private Long id;    // PK
     private String title;   // 제목

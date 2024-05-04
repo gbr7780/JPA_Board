@@ -2,6 +2,7 @@ package com.JPA_Board.board.controller;
 
 import com.JPA_Board.board.dto.BoardRequestDto;
 import com.JPA_Board.board.dto.BoardResponseDto;
+import com.JPA_Board.board.paging.CommonParams;
 import com.JPA_Board.board.service.BoardService;
 import com.JPA_Board.exception.CustomException;
 import com.JPA_Board.exception.ErrorCode;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -32,8 +34,8 @@ public class BoardApiController {
      *  게시글 리스트 조회
      */
     @GetMapping("/boards")
-    public List<BoardResponseDto> findAll(@RequestParam final char deleteYn){
-        return boardService.findAllByDeleteYn(deleteYn);
+    public Map<String, Object> findAll(final CommonParams params){
+        return boardService.findAll(params);
     }
 
     /**
@@ -58,5 +60,15 @@ public class BoardApiController {
     @DeleteMapping("/boards/{id}")
     public Long delete(@PathVariable final Long id) {
         return boardService.delete(id);
+    }
+
+    /**
+     * 마이바티스 연결 테스트
+     */
+    @GetMapping("/boards/test")
+    public int countTest(){
+        int count = boardService.count(1);
+        return count;
+
     }
 }

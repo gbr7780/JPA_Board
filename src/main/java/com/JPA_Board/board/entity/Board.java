@@ -34,6 +34,7 @@ public class Board {
 
     private LocalDateTime modifiedDate; // 수정일
 
+
     @Builder
     public Board(String title, String content, String writer, int hits, char deleteYn, LocalDateTime createdDate, LocalDateTime modifiedDate) {
         this.title = title;

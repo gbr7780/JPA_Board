@@ -4,6 +4,8 @@ package com.JPA_Board.board.repository;
 import com.JPA_Board.board.entity.Board;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

@@ -17,7 +17,7 @@ public class BoardRequestDto {
         return Board.builder()
                 .title(title)
                 .content(content)
-                .writer(writer)
+                .writer("111")
                 .hits(0)
                 .deleteYn(deleteYn)
                 .build();
